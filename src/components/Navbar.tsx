@@ -9,9 +9,9 @@ const links = [
 
 export default function Navbar() {
   return (
-    <nav className="bg-white shadow px-4 py-3 flex justify-between items-center">
+    <nav className="bg-gray-500 shadow px-4 py-3 flex justify-between items-center">
       <Link to="/" className="text-xl font-bold text-indigo-600">
-        📚 Library System
+        Library Management
       </Link>
       <div className="flex gap-4">
         {links.map((link) => (

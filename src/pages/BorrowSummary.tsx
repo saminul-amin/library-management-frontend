@@ -1,7 +1,7 @@
 import { useGetBorrowSummaryQuery } from "@/redux/api";
 
 export default function BorrowSummary() {
-  const { data, isLoading } = useGetBorrowSummaryQuery();
+  const { data: borrowSummary, isLoading } = useGetBorrowSummaryQuery();
 
   return (
     <div className="p-4">
@@ -19,7 +19,7 @@ export default function BorrowSummary() {
               </tr>
             </thead>
             <tbody>
-              {data?.map((item, idx) => (
+              {borrowSummary?.data?.map((item, idx) => (
                 <tr key={idx}>
                   <td className="border p-2">{item.book.title}</td>
                   <td className="border p-2">{item.book.isbn}</td>

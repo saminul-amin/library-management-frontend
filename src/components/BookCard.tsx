@@ -13,8 +13,12 @@ export default function BookCard({ book }: { book: IBook }) {
         <p className="text-sm">Author: {book.author}</p>
         <p className="text-sm">Genre: {book.genre}</p>
         <p className="text-sm">Copies: {book.copies}</p>
-        <p className="text-sm text-green-600 font-medium">
-          {book.available ? "Available" : "Unavailable"}
+        <p
+          className={`text-sm font-medium ${
+            book.copies !== 0 ? "text-green-600" : "text-red-600"
+          }`}
+        >
+          {book.copies !== 0 ? "Available" : "Unavailable"}
         </p>
         <div className="flex gap-2 mt-4">
           <Link to={`/edit-book/${book._id}`}>
