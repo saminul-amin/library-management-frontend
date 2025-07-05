@@ -1,69 +1,86 @@
-# React + TypeScript + Vite
+# 📚 Library Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> A clean and responsive frontend for managing books, built with modern tools — because reading is still cool, even when you're debugging.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Overview
 
-## Expanding the ESLint configuration
+This project is the frontend of a **Minimal Library Management System**, developed using **React**, **TypeScript**, **Redux Toolkit Query (RTK Query)**, and **Tailwind CSS**.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+The application allows users to:
+- View available books
+- Add, update, or delete books
+- Borrow books
+- See a summary of borrowed books
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+All operations are performed **without authentication** and are powered by a simple, modular RESTful backend API.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Features
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Book Management
+- View all books in a card layout
+- Add new books via a form
+- Edit existing book details (in a separate page)
+- Delete books with confirmation
+- Book availability is auto-updated based on copy count
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Borrowing
+- Borrow a selected book (with due date and quantity)
+- Prevents borrowing more than available copies
+- Marks book unavailable when copies hit zero
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Borrow Summary
+- Aggregated summary showing total quantity borrowed per book
+- Uses MongoDB aggregation pipeline behind the scenes
+
+### Navigation
+- **Navbar** with links to:
+  - All Books
+  - Add Book
+  - Borrow Summary
+- **Footer** with credits (you deserve it)
+
+---
+
+## Tech Stack
+
+| Layer        | Tech                          |
+|--------------|-------------------------------|
+| Framework    | React + TypeScript            |
+| State/API    | Redux Toolkit + RTK Query     |
+| Styling      | Tailwind CSS + shadcn/ui      |
+| Backend API  | Express.js + MongoDB (with Mongoose) |
+
+---
+
+## Development Notes
+
+- **RTK Query** handles all data fetching and caching
+- **TypeScript** used throughout with properly defined interfaces (`IBook`, `IBorrow`, etc.)
+- **Tailwind CSS** + **shadcn/ui** used for consistent UI
+- Code is modular, readable, and organized
+
+---
+
+## Contact
+
+- **Developer:** Md. Saminul Amin
+- **Email:** [saminul.amin@gmail.com](mailto:saminul.amin@gmail.com)
+- **GitHub:** [@saminul-amin](https://github.com/saminul-amin)
+- **LinkedIn:** [Md. Saminul Amin](https://www.linkedin.com/in/md-saminul-amin-91605730a/)
+
+---
+
+## 🏁 Final Words
+
+> This project demonstrates practical usage of modern React architecture — combining RTK Query, type-safe components, and clean UI design — to solve a simple, real-world problem.
+
+Thanks for reading (or at least skimming until the end). Hope you enjoy the code as much as I enjoyed building and debugging it. ✌️
+
+---
+
+
+

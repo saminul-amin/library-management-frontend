@@ -8,7 +8,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const api = createApi({
   reducerPath: "api",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/api/" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "https://b5-a3-main.vercel.app/api/" }),
   tagTypes: ["Book", "Borrow"],
   endpoints: (builder) => ({
     getBooks: builder.query<{ data: IBook[] }, void>({
