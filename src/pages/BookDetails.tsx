@@ -27,7 +27,6 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { useGetBookByIdQuery, useDeleteBookMutation } from "@/redux/api";
-import type { IBook } from "@/types/book";
 import { toast } from "react-toastify";
 
 export default function BookDetails() {
@@ -42,7 +41,7 @@ export default function BookDetails() {
   });
   const [deleteBook, { isLoading: isDeleting }] = useDeleteBookMutation();
 
-  const book: IBook = bookData?.data;
+  const book = bookData?.data;
 
   const handleDelete = async () => {
     if (!book) return;

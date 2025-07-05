@@ -11,13 +11,13 @@ export const api = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/api/" }),
   tagTypes: ["Book", "Borrow"],
   endpoints: (builder) => ({
-    getBooks: builder.query<IBook[], void>({
+    getBooks: builder.query<{ data: IBook[] }, void>({
       query: () => "books",
       providesTags: ["Book"],
     }),
-    getBookById: builder.query<IBook, string>({
+    getBookById: builder.query<{ data: IBook }, string>({
       query: (id) => `books/${id}`,
-      providesTags: (result, error, id) => [{ type: "Book", id }],
+      providesTags: (_result, _error, id) => [{ type: "Book", id }],
     }),
     createBook: builder.mutation<IBook, Partial<IBook>>({
       query: (body) => ({ url: "books", method: "POST", body }),
@@ -35,7 +35,7 @@ export const api = createApi({
       query: (body) => ({ url: "borrow", method: "POST", body }),
       invalidatesTags: ["Book", "Borrow"],
     }),
-    getBorrowSummary: builder.query<IBorrowSummaryItem[], void>({
+    getBorrowSummary: builder.query<{ data: IBorrowSummaryItem[] }, void>({
       query: () => "borrow",
       providesTags: ["Borrow"],
     }),

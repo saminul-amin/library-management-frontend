@@ -169,7 +169,6 @@ export default function BorrowSummary() {
                                 <div className="text font-medium text-gray-900">
                                   {item.book.title}
                                 </div>
-                                
                               </div>
                             </div>
                           </td>
