@@ -26,6 +26,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import type { IBook } from "@/types/book";
 import { useDeleteBookMutation } from "@/redux/api";
+import { toast } from "react-toastify";
 
 interface BookCardProps {
   book: IBook;
@@ -40,9 +41,10 @@ export default function BookCard({ book }: BookCardProps) {
   const handleDelete = async () => {
     try {
       await deleteBook(book._id).unwrap();
+      toast("The book successfully deleted from the Library!");
     } catch (error) {
       console.error("Failed to delete book:", error);
-      // You might want to show an error toast here
+      toast("Failed to delete the book!");
     }
   };
 

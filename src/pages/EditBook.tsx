@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import type { Genre, IBook } from "@/types/book";
+import { toast } from "react-toastify";
 
 export default function EditBook() {
   const { id } = useParams();
@@ -56,6 +57,7 @@ export default function EditBook() {
   const handleSubmit = async () => {
     if (!id) return;
     await updateBook({ id, body: { ...form, genre: form.genre as Genre } });
+    toast("Book information updated successfully!!");
     navigate("/");
   };
 

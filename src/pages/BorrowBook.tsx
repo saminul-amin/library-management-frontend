@@ -16,6 +16,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 import type { IBook } from "@/types/book";
+import { toast } from "react-toastify";
 
 export default function BorrowBook() {
   const { bookId } = useParams();
@@ -36,6 +37,7 @@ export default function BorrowBook() {
       quantity: Number(form.quantity),
       dueDate: form.dueDate,
     });
+    toast("Book borrowed successfully!!");
     navigate("/borrow-summary");
   };
 

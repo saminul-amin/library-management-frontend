@@ -28,6 +28,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { useGetBookByIdQuery, useDeleteBookMutation } from "@/redux/api";
 import type { IBook } from "@/types/book";
+import { toast } from "react-toastify";
 
 export default function BookDetails() {
   const { id } = useParams<{ id: string }>();
@@ -48,9 +49,11 @@ export default function BookDetails() {
 
     try {
       await deleteBook(book._id).unwrap();
+      toast("The book successfully deleted from the Library!");
       navigate("/");
     } catch (err) {
       console.error("Error deleting book:", err);
+      toast("Failed to delete the book!");
     }
   };
 
