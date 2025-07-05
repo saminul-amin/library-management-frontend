@@ -19,6 +19,7 @@ export interface IBorrowSummaryItem {
   book: {
     title: string;
     isbn: string;
+    author: string;
   };
   totalQuantity: number;
 }

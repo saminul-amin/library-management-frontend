@@ -15,6 +15,10 @@ export const api = createApi({
       query: () => "books",
       providesTags: ["Book"],
     }),
+    getBookById: builder.query<IBook, string>({
+      query: (id) => `books/${id}`,
+      providesTags: (result, error, id) => [{ type: "Book", id }],
+    }),
     createBook: builder.mutation<IBook, Partial<IBook>>({
       query: (body) => ({ url: "books", method: "POST", body }),
       invalidatesTags: ["Book"],
@@ -40,6 +44,7 @@ export const api = createApi({
 
 export const {
   useGetBooksQuery,
+  useGetBookByIdQuery,
   useCreateBookMutation,
   useUpdateBookMutation,
   useDeleteBookMutation,
